@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
 
     // MaterialApp হল অ্যাপ্লিকেশনের মূল রুট উইজেট
     return MaterialApp( // Theme ব্যবহার করার সময় const ব্যবহার করা যাবে না। 
-      theme: ThemeData(primarySwatch: Colors.green), // Theme এর প্রাইমারি কালার
+      theme: ThemeData(primarySwatch: Colors.green,), // Theme এর প্রাইমারি কালার
       darkTheme: ThemeData(primarySwatch: Colors.amber), // Theme এর ডার্ক মোডের প্রাইমারি কালার
-      color: Colors.blue, // Theme এর কালার
+      color: Colors.green, // Theme এর কালার
       debugShowCheckedModeBanner: false, // ডিবাগ মোড ব্যানার দেখানো বন্ধ করা হয়েছে।
       home: HomeActivity(), // HomeActivity কে প্রধান স্ক্রিন হিসেবে সেট করা হয়েছে
     );
@@ -49,14 +49,7 @@ class HomeActivity extends StatelessWidget {
 
       appBar: AppBar(
         title: const Text("App Title"),
-        backgroundColor: Colors.green, 
-
-
-
-
-
-        
-        
+        backgroundColor: Colors.green,         
         actions: [
           IconButton(onPressed: (){MyButton("This is alart", context);},icon: Icon(Icons.comment, color: Colors.white,),),
           IconButton(onPressed: (){},icon: Icon(Icons.add,  color: Colors.white,),),
@@ -67,6 +60,115 @@ class HomeActivity extends StatelessWidget {
 
 
       ),
+
+      floatingActionButton: FloatingActionButton(
+        elevation: 10,
+        child: Icon(Icons.alarm_rounded),
+        backgroundColor: Colors.green,
+        onPressed: (){MyButton("Floating Action Alart", context);},
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1, // Active বাটন+ফেইজ নির্দেশ করতে currentIndex ব্যবহার করা হয়েছে
+        fixedColor: Colors.green, 
+        backgroundColor: Colors.amber,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.contacts), label: "Contact"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings"),
+        ],
+        onTap: (int index){
+          if(index ==0){
+            MyButton("Contact Page", context);
+          }if(index ==1){
+            MyButton("Home Page", context);
+          }if(index ==2){
+            MyButton("Settings Page", context);
+          }
+        },
+      ),
+
+
+      drawer: Drawer(
+        child: ListView( // Drawer এর ভিতরে একটি ListView ব্যবহার করা করা লাগে। 
+          
+          children: [ // ListView এর ভিতরে children ব্যবহার করা লাগে। 
+
+            // একটা অংশ হচ্ছে DrawerHeader, যা ড্রয়ারের শীর্ষক অংশ হিসেবে ব্যবহার করা হয়। 
+            DrawerHeader(
+              padding: EdgeInsets.all(0), // ড্রয়ার হেডারের প্যাডিং সেট করা হয়েছে।
+              child: UserAccountsDrawerHeader( // text অথবা UserAccountDrawerHeader বা অন্য কিছু ব্যবহার করা যাবে।
+                decoration: BoxDecoration(color: Colors.green), // background color হিসাবে কাজ করে। 
+                accountName: Text("Rasel Hossain"),
+                accountEmail: Text("adibrasel.2022@gmail.com"),	
+                currentAccountPicture: Image.network("https://adibrasel.github.io/My_Portfolio/static/media/bannerImg.c6fef816103c81f5c150.png"),
+              )
+              
+              ),
+
+            ListTile( // ListTile এর ভিতরে একটি লিস্ট আইটেম তৈরি করা হয়েছে।
+              title: Text("Home"), // ListTile এর ভিতরে একটা title দিতে হয়।
+              leading: Icon(Icons.home), // ListTile এর ভিতরে একটা leading দিতে হয়।
+              onTap: () => MyButton("Home Page", context), // ListTile এর ভিতরে একটা onTap দিতে হয়।
+            ),
+            ListTile( 
+              title: Text("settings"), 
+              leading: Icon(Icons.settings),
+              onTap: () => MyButton("settings Page", context), 
+            ),
+            ListTile( 
+              title: Text("person"), 
+              leading: Icon(Icons.person),
+              onTap: () => MyButton("person Page", context), 
+            ),
+
+          ],
+
+        ),
+      ),
+     
+
+
+      endDrawer: Drawer(
+        child: ListView( // Drawer এর ভিতরে একটি ListView ব্যবহার করা করা লাগে। 
+          
+          children: [ // ListView এর ভিতরে children ব্যবহার করা লাগে। 
+
+            // একটা অংশ হচ্ছে DrawerHeader, যা ড্রয়ারের শীর্ষক অংশ হিসেবে ব্যবহার করা হয়। 
+            DrawerHeader(
+              padding: EdgeInsets.all(0), // ড্রয়ার হেডারের প্যাডিং সেট করা হয়েছে।
+              child: UserAccountsDrawerHeader( // text অথবা UserAccountDrawerHeader বা অন্য কিছু ব্যবহার করা যাবে।
+                decoration: BoxDecoration(color: Colors.green), // background color হিসাবে কাজ করে। 
+                accountName: Text("Rasel Hossain"),
+                accountEmail: Text("adibrasel.2022@gmail.com"),	
+                currentAccountPicture: Image.network("https://adibrasel.github.io/My_Portfolio/static/media/bannerImg.c6fef816103c81f5c150.png"),
+              )
+              
+              ),
+
+            ListTile( // ListTile এর ভিতরে একটি লিস্ট আইটেম তৈরি করা হয়েছে।
+              title: Text("Home"), // ListTile এর ভিতরে একটা title দিতে হয়।
+              leading: Icon(Icons.home), // ListTile এর ভিতরে একটা leading দিতে হয়।
+              onTap: () => MyButton("Home Page", context), // ListTile এর ভিতরে একটা onTap দিতে হয়।
+            ),
+            ListTile( 
+              title: Text("settings"), 
+              leading: Icon(Icons.settings),
+              onTap: () => MyButton("settings Page", context), 
+            ),
+            ListTile( 
+              title: Text("person"), 
+              leading: Icon(Icons.person),
+              onTap: () => MyButton("person Page", context), 
+            ),
+
+          ],
+
+        ),
+      ),
+     
+
+
 
     );
 
