@@ -170,6 +170,27 @@ class HomeActivity extends StatelessWidget {
 
 
 
+
+
+
+
+
+
+      body: Container(
+        height: 240,
+        width: 240,
+        alignment: Alignment.center,
+        margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+        decoration: BoxDecoration(
+          color: Colors.blue,
+          border: Border.all(color: Colors.black, width: 2),
+        ),
+        child: Image.network("https://adibrasel.github.io/My_Portfolio/static/media/bannerImg.c6fef816103c81f5c150.png"),
+
+      )
+
+
     );
 
   }
