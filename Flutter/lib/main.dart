@@ -43,14 +43,14 @@ class HomeActivity extends StatelessWidget {
     ));
   }
 
-  MyAlertDialog(context) {
+  MyAlertDialog(context, AlertTitle, AlertDescription) {
     return showDialog(
         context: context,
-        builder: (BuildContext context) {
+        builder: (BuildContext context,) {
           return Expanded(
             child: AlertDialog(
-              title: const Text("Alert"),
-              content: const Text("Do you want do delete "),
+              title: Text(AlertTitle),
+              content:  Text(AlertDescription),
               actions: [
                 // এই বাটনগুলি দ্বারা বাটনের কাজ নির্ধারণ করা হয়েছে
                 TextButton(
@@ -73,8 +73,37 @@ class HomeActivity extends StatelessWidget {
         });
     }
 
+
+
+  var MyItems = [
+    {
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ30RLMgbsV4ObkRotWKMjiprvthI91tQbWOA&s",
+      "title": "Rasel",
+    },
+    {
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpiURnCVcuPLeE_s_0EaKu7-Sysbz2vkQIrw&s",
+      "title": "Hossain",
+    },
+    {
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ30RLMgbsV4ObkRotWKMjiprvthI91tQbWOA&s",
+      "title": "Adib",
+    },
+    {
+      "img": "https://pbs.twimg.com/profile_images/945881815247491073/sDlx6PcW_400x400.jpg",
+      "title": "Jannatul",
+    },
+    {
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ30RLMgbsV4ObkRotWKMjiprvthI91tQbWOA&s",
+      "title": "Mariya",
+    },
+  ];
+
+
+
+
   @override
   Widget build(BuildContext context) {
+    
     ButtonStyle buttonStyle = ElevatedButton.styleFrom(
       minimumSize: const Size(double.infinity, 50),
       padding: const EdgeInsets.all(10),
@@ -84,7 +113,7 @@ class HomeActivity extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
     );
-
+ 
     // Scaffold ব্যবহার করে একটি পূর্ণাঙ্গ স্ক্রিন তৈরি করা হয়েছে
     return Scaffold(
         appBar: AppBar(
@@ -251,67 +280,43 @@ class HomeActivity extends StatelessWidget {
             ],
           ),
         ),
-        body: Center(
+        
+        
+        body: ListView.builder(
+          itemCount: MyItems.length,
+          itemBuilder: (context, index){
+            return GestureDetector(
+              //GestureDetector এ বাটনে একবার ক্লিক করলে দুইবার ক্লিক করলে লং ক্লিক করলে কি হবে তা নির্দারন করা হয়। 
+              onTap: (){
+                MyAlertDialog(context, "OnTap", "This is OnTap AlertDialog. and this title ${MyItems[index]["title"]!}");
+              },
+              onDoubleTap: (){
+                MyAlertDialog(context, "onDoubleTap", "This is OnTonDoubleTapap AlertDialog and this title ${MyItems[index]["title"]!}");
+              },
+              onLongPress: (){
+                MyAlertDialog(context, "onLongPress", "This is onLongPress AlertDialog and this title ${MyItems[index]["title"]!}");
+              },
+
+              child: Container(
+                margin: const EdgeInsets.all(10),
+                width: double.infinity,
+                height: 200,
+
+                child: Image.network(MyItems[index]["img"]!, fit: BoxFit.fill,),
 
 
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "First Name",
-                  labelText: "First Name",
-                  labelStyle: TextStyle(color: Colors.green),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Last Name",
-                  labelText: "Last Name",
-                  labelStyle: TextStyle(color: Colors.green),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Email Address",
-                  labelText: "Email Address",
-                  labelStyle: TextStyle(color: Colors.green),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  
-                },
-                child: const Text("Submit"),
-                style: buttonStyle,
-              ),
-            ),
 
-            
-            ],
-          )
 
+            );
+          },
           
-        ));
+        )
+
+
+
+
+    );
   }
 }
+
