@@ -1,322 +1,82 @@
-import 'package:flutter/material.dart'; // Flutter এর Material Design লাইব্রেরি ইমপোর্ট করা হয়েছে
+import 'package:flutter/material.dart';
 
-// অ্যাপ্লিকেশনের এন্ট্রি পয়েন্ট
-main() {
-  runApp(
-      const MyApp()); // MyApp ক্লাসকে রান করা হচ্ছে, এটি অ্যাপ্লিকেশনের মূল UI শুরু করবে
+import 'TabBarScreen/CameratTabBarScreen.dart';
+import 'TabBarScreen/HomeTabBarScreen.dart';
+import 'TabBarScreen/NotificationsTabBarScreen.dart';
+import 'TabBarScreen/ProfileTabBarScreen.dart';
+import 'TabBarScreen/SearchTabBarScreen.dart';
+
+
+
+void main() {
+  runApp(const MyApp());
 }
 
-// StatelessWidget এর মাধ্যমে MyApp ক্লাস তৈরি করা হয়েছে
 class MyApp extends StatelessWidget {
-  const MyApp(
-      {super.key}); // Constructor এর মাধ্যমে MyApp ক্লাসের অবজেক্ট তৈরি করা হয়েছে
+  const MyApp({Key? key}) : super(key: key);
 
-  // build() মেথড ব্যবহার করে UI তৈরি করা হবে
   @override
   Widget build(BuildContext context) {
-    // MaterialApp হল অ্যাপ্লিকেশনের মূল রুট উইজেট
     return MaterialApp(
-      // Theme ব্যবহার করার সময় const ব্যবহার করা যাবে না।
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-      ), // Theme এর প্রাইমারি কালার
-      darkTheme: ThemeData(
-          primarySwatch: Colors.amber), // Theme এর ডার্ক মোডের প্রাইমারি কালার
-      color: Colors.green, // Theme এর কালার
-      debugShowCheckedModeBanner:
-          false, // ডিবাগ মোড ব্যানার দেখানো বন্ধ করা হয়েছে।
-      home:
-          HomeActivity(), // HomeActivity কে প্রধান স্ক্রিন হিসেবে সেট করা হয়েছে
+        primarySwatch: Colors.blue,
+      ),
+      home: const HomeActivity(),
     );
   }
 }
 
-// HomeActivity ক্লাস একটি StatelessWidget, যা মূল UI প্রদর্শন করে
+
 class HomeActivity extends StatelessWidget {
-  HomeActivity(
-      {super.key}); // Constructor ব্যবহার করা হয়েছে HomeActivity অবজেক্ট তৈরি করতে
-
-  // একটি বাটনের মাধ্যমে SnackBar প্রদর্শন করার জন্য একটি মেথড তৈরি করা হয়েছে
-  MyButton(Message, context) {
-    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text("This is a SnackBar > $Message"),
-    ));
-  }
-
-  MyAlertDialog(context, AlertTitle, AlertDescription) {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context,) {
-          return Expanded(
-            child: AlertDialog(
-              title: Text(AlertTitle),
-              content:  Text(AlertDescription),
-              actions: [
-                // এই বাটনগুলি দ্বারা বাটনের কাজ নির্ধারণ করা হয়েছে
-                TextButton(
-                  onPressed: () {
-                    MyButton("Yes", context); // একটি SnackBar প্রদর্শন করার পর ডায়লগ বন্ধ করার কোড করা হয়েছে।
-                    Navigator.of(context).pop(); // ডায়ালগ বন্ধ করা হয়েছে
-                  },
-                  child: const Text("Yes"),
-                ),
-                // এই বাটনগুলি দ্বারা বাটনের কাজ নির্ধারণ করা হয়েছে
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(); // ডায়ালগ বন্ধ করা হয়েছে
-                  },
-                  child: const Text("No"),
-                ),
-              ],
-            ),
-          );
-        });
-    }
-
-
-
-  var MyItems = [
-    {
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ30RLMgbsV4ObkRotWKMjiprvthI91tQbWOA&s",
-      "title": "Rasel",
-    },
-    {
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpiURnCVcuPLeE_s_0EaKu7-Sysbz2vkQIrw&s",
-      "title": "Hossain",
-    },
-    {
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ30RLMgbsV4ObkRotWKMjiprvthI91tQbWOA&s",
-      "title": "Adib",
-    },
-    {
-      "img": "https://pbs.twimg.com/profile_images/945881815247491073/sDlx6PcW_400x400.jpg",
-      "title": "Jannatul",
-    },
-    {
-      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ30RLMgbsV4ObkRotWKMjiprvthI91tQbWOA&s",
-      "title": "Mariya",
-    },
-  ];
-
-
-
-
+  const HomeActivity({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    
-    ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-      minimumSize: const Size(double.infinity, 50),
-      padding: const EdgeInsets.all(10),
-      backgroundColor: Colors.green,
-      foregroundColor: Colors.white, // Text Color
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-      ),
-    );
- 
-    // Scaffold ব্যবহার করে একটি পূর্ণাঙ্গ স্ক্রিন তৈরি করা হয়েছে
-    return Scaffold(
+
+
+
+    return DefaultTabController(
+      length: 5, 
+      child: Scaffold(
+
+
+
         appBar: AppBar(
-          title: const Text("App Title"),
-          backgroundColor: Colors.green,
-          actions: [
-            IconButton(
-              onPressed: () {
-                MyButton("This is alart", context);
-              },
-              icon: const Icon(
-                Icons.comment,
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.edit,
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.fork_left,
-                color: Colors.white,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.email,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          elevation: 10,
-          child: const Icon(Icons.alarm_rounded),
-          backgroundColor: Colors.green,
-          onPressed: () {
-            MyButton("Floating Action Alart", context);
-          },
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex:
-              1, // Active বাটন+ফেইজ নির্দেশ করতে currentIndex ব্যবহার করা হয়েছে
-          fixedColor: Colors.green,
-          backgroundColor: Colors.amber,
-          items: [
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.contacts), label: "Contact"),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.home), label: "Home"),
-            const BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: "Settings"),
-          ],
-          onTap: (int index) {
-            if (index == 0) {
-              MyButton("Contact Page", context);
-            }
-            if (index == 1) {
-              MyButton("Home Page", context);
-            }
-            if (index == 2) {
-              MyButton("Settings Page", context);
-            }
-          },
-        ),
-        drawer: Drawer(
-          child: ListView(
-            // Drawer এর ভিতরে একটি ListView ব্যবহার করা করা লাগে।
-
-            children: [
-              // ListView এর ভিতরে children ব্যবহার করা লাগে।
-
-              // একটা অংশ হচ্ছে DrawerHeader, যা ড্রয়ারের শীর্ষক অংশ হিসেবে ব্যবহার করা হয়।
-              DrawerHeader(
-                  padding: const EdgeInsets.all(
-                      0), // ড্রয়ার হেডারের প্যাডিং সেট করা হয়েছে।
-                  child: UserAccountsDrawerHeader(
-                    // text অথবা UserAccountDrawerHeader বা অন্য কিছু ব্যবহার করা যাবে।
-                    decoration: const BoxDecoration(
-                        color:
-                            Colors.green), // background color হিসাবে কাজ করে।
-                    accountName: const Text("Rasel Hossain"),
-                    accountEmail: const Text("adibrasel.2022@gmail.com"),
-                    currentAccountPicture: Image.network(
-                        "https://adibrasel.github.io/My_Portfolio/static/media/bannerImg.c6fef816103c81f5c150.png"),
-                  )),
-
-              ListTile(
-                // ListTile এর ভিতরে একটি লিস্ট আইটেম তৈরি করা হয়েছে।
-                title:
-                    const Text("Home"), // ListTile এর ভিতরে একটা title দিতে হয়।
-                leading: const Icon(
-                    Icons.home), // ListTile এর ভিতরে একটা leading দিতে হয়।
-                onTap: () => MyButton("Home Page",
-                    context), // ListTile এর ভিতরে একটা onTap দিতে হয়।
-              ),
-              ListTile(
-                title: const Text("settings"),
-                leading: const Icon(Icons.settings),
-                onTap: () => MyButton("settings Page", context),
-              ),
-              ListTile(
-                title: const Text("person"),
-                leading: const Icon(Icons.person),
-                onTap: () => MyButton("person Page", context),
-              ),
+          title: const Text('TabBar Widget'),
+          bottom: const TabBar(
+            isScrollable: true, // লেখা এবং আইকন সম্পূর্ন দেখা যাবে। 
+            tabs: [
+              Tab(icon: Icon(Icons.home), text: 'Home'),
+              Tab(icon: Icon(Icons.search), text: 'Search'),
+              Tab(icon: Icon(Icons.camera), text: 'Camera'),
+              Tab(icon: Icon(Icons.notifications), text: 'Notifications'),
+              Tab(icon: Icon(Icons.account_circle), text: 'Profile'),
             ],
           ),
         ),
-        endDrawer: Drawer(
-          child: ListView(
-            // Drawer এর ভিতরে একটি ListView ব্যবহার করা করা লাগে।
 
-            children: [
-              // ListView এর ভিতরে children ব্যবহার করা লাগে।
 
-              // একটা অংশ হচ্ছে DrawerHeader, যা ড্রয়ারের শীর্ষক অংশ হিসেবে ব্যবহার করা হয়।
-              DrawerHeader(
-                  padding: const EdgeInsets.all(
-                      0), // ড্রয়ার হেডারের প্যাডিং সেট করা হয়েছে।
-                  child: UserAccountsDrawerHeader(
-                    // text অথবা UserAccountDrawerHeader বা অন্য কিছু ব্যবহার করা যাবে।
-                    decoration: const BoxDecoration(
-                        color:
-                            Colors.green), // background color হিসাবে কাজ করে।
-                    accountName: const Text("Rasel Hossain"),
-                    accountEmail: const Text("adibrasel.2022@gmail.com"),
-                    currentAccountPicture: Image.network(
-                        "https://adibrasel.github.io/My_Portfolio/static/media/bannerImg.c6fef816103c81f5c150.png"),
-                  )),
 
-              ListTile(
-                // ListTile এর ভিতরে একটি লিস্ট আইটেম তৈরি করা হয়েছে।
-                title:
-                    const Text("Home"), // ListTile এর ভিতরে একটা title দিতে হয়।
-                leading: const Icon(
-                    Icons.home), // ListTile এর ভিতরে একটা leading দিতে হয়।
-                onTap: () => MyButton("Home Page",
-                    context), // ListTile এর ভিতরে একটা onTap দিতে হয়।
-              ),
-              ListTile(
-                title: const Text("settings"),
-                leading: const Icon(Icons.settings),
-                onTap: () => MyButton("settings Page", context),
-              ),
-              ListTile(
-                title: const Text("person"),
-                leading: const Icon(Icons.person),
-                onTap: () => MyButton("person Page", context),
-              ),
-            ],
-          ),
+        body: const TabBarView(
+          children: [
+            Hometabbarscreen(),
+            Searchtabbarscreen(),
+            Camerattabbarscreen(),
+            Notificationstabbarscreen(),
+            Profiletabbarscreen(),
+          ],
         ),
-        
-        
-        body: ListView.builder(
-          itemCount: MyItems.length,
-          itemBuilder: (context, index){
-            return GestureDetector(
-              //GestureDetector এ বাটনে একবার ক্লিক করলে দুইবার ক্লিক করলে লং ক্লিক করলে কি হবে তা নির্দারন করা হয়। 
-              onTap: (){
-                MyAlertDialog(context, "OnTap", "This is OnTap AlertDialog. and this title ${MyItems[index]["title"]!}");
-              },
-              onDoubleTap: (){
-                MyAlertDialog(context, "onDoubleTap", "This is OnTonDoubleTapap AlertDialog and this title ${MyItems[index]["title"]!}");
-              },
-              onLongPress: (){
-                MyAlertDialog(context, "onLongPress", "This is onLongPress AlertDialog and this title ${MyItems[index]["title"]!}");
-              },
-
-              child: Container(
-                margin: const EdgeInsets.all(10),
-                width: double.infinity,
-                height: 200,
-
-                child: Image.network(MyItems[index]["img"]!, fit: BoxFit.fill,),
-
-
-              ),
-
-
-            );
-          },
-          
-        )
 
 
 
 
+      )
     );
+
+  
+  
   }
 }
+
 
