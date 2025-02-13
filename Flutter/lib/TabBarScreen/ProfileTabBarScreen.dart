@@ -10,10 +10,22 @@ class Profiletabbarscreen extends StatefulWidget {
 class _ProfiletabbarscreenState extends State<Profiletabbarscreen> {
   @override
   Widget build(BuildContext context) {
-     return Container(
-      child: Center(
-        child: Text('Profile tab bar screen'),
+     return Scaffold(
+
+      appBar: AppBar(
+        title: const Text('Profile tab bar screen'),
       ),
-    );
+
+      body: Center(
+        child: CircularProgressIndicator(
+          color: Colors.red,
+          backgroundColor: Colors.grey,
+          strokeWidth: 5,
+        ),
+      ),
+
+
+
+     );
   }
 }

@@ -28,55 +28,48 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class HomeActivity extends StatelessWidget {
-  const HomeActivity({Key? key}) : super(key: key);
+  const HomeActivity({super.key});
+
   @override
   Widget build(BuildContext context) {
-
-
-
-    return DefaultTabController(
-      length: 5, 
-      child: Scaffold(
-
-
-
-        appBar: AppBar(
-          title: const Text('TabBar Widget'),
-          bottom: const TabBar(
-            isScrollable: true, // লেখা এবং আইকন সম্পূর্ন দেখা যাবে। 
-            tabs: [
-              Tab(icon: Icon(Icons.home), text: 'Home'),
-              Tab(icon: Icon(Icons.search), text: 'Search'),
-              Tab(icon: Icon(Icons.camera), text: 'Camera'),
-              Tab(icon: Icon(Icons.notifications), text: 'Notifications'),
-              Tab(icon: Icon(Icons.account_circle), text: 'Profile'),
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('TabBar Screen'),
+      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          color: Colors.green
         ),
-
-
-
-        body: const TabBarView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Hometabbarscreen(),
-            Searchtabbarscreen(),
-            Camerattabbarscreen(),
-            Notificationstabbarscreen(),
-            Profiletabbarscreen(),
+            const SizedBox(height: 20),
+            const Text('TabBar Screen', style: TextStyle(fontSize: 20)),
+            const SizedBox(height: 20),
+            const Text('Click on the below tabs to see the content'),
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Hometabbarscreen('First Data', 'Rasel Hossain Adib')),	
+                );
+              }, 
+              
+              child: const ListTile(
+                tileColor: Colors.white,
+                
+                title: Text('Home'),
+                trailing: Icon(Icons.home),
+              ),
+            ),
+            
           ],
         ),
-
-
-
-
       )
     );
-
-  
-  
   }
 }
-
-
