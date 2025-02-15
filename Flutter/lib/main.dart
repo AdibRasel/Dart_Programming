@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'TabBarScreen/CameratTabBarScreen.dart';
+import 'TabBarScreen/FlutterWork.dart';
 import 'TabBarScreen/HomeTabBarScreen.dart';
+import 'TabBarScreen/ListViewExamples.dart';
 import 'TabBarScreen/NotificationsTabBarScreen.dart';
 import 'TabBarScreen/ProfileTabBarScreen.dart';
 import 'TabBarScreen/SearchTabBarScreen.dart';
@@ -63,6 +65,43 @@ class HomeActivity extends StatelessWidget {
                   trailing: Icon(Icons.home),
                 ),
               ),
+             
+             
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Flutterwork()),
+                  );
+                },
+                child: const ListTile(
+                  tileColor: Colors.white,
+                  title: Text('Flutter Work'),
+                  trailing: Icon(Icons.work),
+                ),
+              ),
+
+
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ListViewExamples()),
+                  );
+                },
+                child: const ListTile(
+                  tileColor: Colors.white,
+                  title: Text('ListView Examples'),
+                  trailing: Icon(Icons.work),
+                ),
+              ),
+
+
+
+
+
               TextButton(
                 onPressed: () {
                   
@@ -70,7 +109,7 @@ class HomeActivity extends StatelessWidget {
                 child: ListTile(
                   tileColor: Colors.white,
                   title: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Typing...",
                       label: Text("Enter Any Text"),
                     ),
