@@ -24,25 +24,6 @@ class _HometabbarscreenState extends State<Hometabbarscreen> {
       ),
       
 
-      // body: const Center(
-      //   child: Card(
-      //     elevation: 20,
-      //     child: SizedBox(
-      //       height: 200,
-      //       width: 200,
-      //       child: Column(
-      //         crossAxisAlignment: CrossAxisAlignment.center,
-      //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //         children: [
-      //           Text('Home tab bar screen', style: TextStyle(fontSize: 20)),
-      //           Text('Data: First Data'),
-      //           Text('Name: Rasel Hossain Adib'),
-      //         ],
-      //       )
-      //     ),
-      //   ),
-      // )
-
 
 
 
