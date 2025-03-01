@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'TabBarScreen/CameratTabBarScreen.dart';
 import 'TabBarScreen/FlutterWork.dart';
+import 'TabBarScreen/GridViewExamples.dart';
 import 'TabBarScreen/HomeTabBarScreen.dart';
 import 'TabBarScreen/ListViewExamples.dart';
-import 'TabBarScreen/NotificationsTabBarScreen.dart';
-import 'TabBarScreen/ProfileTabBarScreen.dart';
-import 'TabBarScreen/SearchTabBarScreen.dart';
 import 'TabBarScreen/Person.dart';
 
 void main() {
@@ -94,6 +91,20 @@ class HomeActivity extends StatelessWidget {
                 child: const ListTile(
                   tileColor: Colors.white,
                   title: Text('ListView Examples'),
+                  trailing: Icon(Icons.work),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => GridViewExamples()),
+                  );
+                },
+                child: const ListTile(
+                  tileColor: Colors.white,
+                  title: Text('GridView Examples'),
                   trailing: Icon(Icons.work),
                 ),
               ),
