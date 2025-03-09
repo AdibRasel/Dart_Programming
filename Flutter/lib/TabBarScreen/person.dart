@@ -13,7 +13,7 @@ class Person extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Person"),
       ),
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(children: [

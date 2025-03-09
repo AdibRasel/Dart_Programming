@@ -124,10 +124,10 @@ class _ProfiletabbarscreenState extends State<Profiletabbarscreen> {
                   children: [
                     DropdownButton<String>(
                       value: 'Option 1',
-                      items: [
-                        const DropdownMenuItem(
+                      items: const [
+                        DropdownMenuItem(
                             value: 'Option 1', child: Text('Option 1')),
-                        const DropdownMenuItem(
+                        DropdownMenuItem(
                             value: 'Option 2', child: Text('Option 2')),
                       ],
                       onChanged: (value) {},
@@ -238,6 +238,8 @@ class _ProfiletabbarscreenState extends State<Profiletabbarscreen> {
 
 
 class MyCustomForm extends StatefulWidget {
+  const MyCustomForm({super.key});
+
   @override
   MyCustomFormState createState() {
     return MyCustomFormState();
@@ -259,7 +261,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
           TextFormField(
             decoration: const InputDecoration(
-              icon: const Icon(Icons.person),
+              icon: Icon(Icons.person),
               hintText: 'Enter your full name',
               labelText: 'Name',
             ),
@@ -275,7 +277,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
           TextFormField(
             decoration: const InputDecoration(
-              icon: const Icon(Icons.phone),
+              icon: Icon(Icons.phone),
               hintText: 'Enter a phone number',
               labelText: 'Phone',
             ),
@@ -292,7 +294,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
           TextFormField(
             decoration: const InputDecoration(
-              icon: const Icon(Icons.calendar_today),
+              icon: Icon(Icons.calendar_today),
               hintText: 'Enter your date of birth',
               labelText: 'Dob',
             ),
@@ -308,7 +310,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
           Container(
             padding: const EdgeInsets.only(left: 150.0, top: 40.0),
-            child: new ElevatedButton(
+            child: ElevatedButton(
               child: const Text('Submit'),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {}

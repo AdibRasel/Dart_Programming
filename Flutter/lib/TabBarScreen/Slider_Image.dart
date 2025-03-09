@@ -129,7 +129,7 @@ class ThumbnailNavigationCarousel extends StatelessWidget {
               autoPlay: true,
             ),
           ),
-          Container(
+          SizedBox(
             height: 100.0,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,

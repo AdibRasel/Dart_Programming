@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:shaminibazar/TabBarScreen/CheckboxRadioButtonProgressBar.dart';
+import 'package:shaminibazar/TabBarScreen/Navigation.dart';
 import 'package:shaminibazar/TabBarScreen/Slider.dart';
 import 'package:shaminibazar/TabBarScreen/Snackbar.dart';
+import 'package:shaminibazar/TabBarScreen/Switch.dart';
 import 'package:shaminibazar/TabBarScreen/Tooltip.dart';
 
+import 'TabBarScreen/FlutterAnimation.dart';
+import 'TabBarScreen/FlutterCalendar.dart';
 import 'TabBarScreen/FlutterWork.dart';
 import 'TabBarScreen/GridViewExamples.dart';
 import 'TabBarScreen/HomeTabBarScreen.dart';
 import 'TabBarScreen/ListViewExamples.dart';
 import 'TabBarScreen/Person.dart';
 import 'TabBarScreen/Slider_Image.dart';
+import 'TabBarScreen/Table.dart';
 import 'TabBarScreen/ToastNotification.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,13 +37,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeActivity(),
+      home: HomeActivity(),
     );
   }
 }
 
-class HomeActivity extends StatelessWidget {
+class HomeActivity extends StatefulWidget {
   const HomeActivity({super.key});
+
+  @override
+  _HomeActivityState createState() => _HomeActivityState();
+}
+
+class _HomeActivityState extends State<HomeActivity> {
+  bool isSwitched1 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -69,14 +86,11 @@ class HomeActivity extends StatelessWidget {
                     trailing: Icon(Icons.home),
                   ),
                 ),
-               
-               
                 TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => Flutterwork()),
+                      MaterialPageRoute(builder: (context) => Flutterwork()),
                     );
                   },
                   child: const ListTile(
@@ -85,8 +99,6 @@ class HomeActivity extends StatelessWidget {
                     trailing: Icon(Icons.work),
                   ),
                 ),
-            
-            
                 TextButton(
                   onPressed: () {
                     Navigator.push(
@@ -115,8 +127,7 @@ class HomeActivity extends StatelessWidget {
                     trailing: Icon(Icons.work),
                   ),
                 ),
-            
-                 TextButton(
+                TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -130,15 +141,13 @@ class HomeActivity extends StatelessWidget {
                     trailing: Icon(Icons.work),
                   ),
                 ),
-            
-            
-            
-                 TextButton(
+                TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => CheckboxRadioButtonProgressBar()),
+                          builder: (context) =>
+                              CheckboxRadioButtonProgressBar()),
                     );
                   },
                   child: const ListTile(
@@ -147,16 +156,11 @@ class HomeActivity extends StatelessWidget {
                     trailing: Icon(Icons.work),
                   ),
                 ),
-            
-            
-            
-            
-                 TextButton(
+                TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => Snackbar()),
+                      MaterialPageRoute(builder: (context) => Snackbar()),
                     );
                   },
                   child: const ListTile(
@@ -165,14 +169,11 @@ class HomeActivity extends StatelessWidget {
                     trailing: Icon(Icons.work),
                   ),
                 ),
-            
-            
-                 TextButton(
+                TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => Tooltips()),
+                      MaterialPageRoute(builder: (context) => Tooltips()),
                     );
                   },
                   child: const ListTile(
@@ -181,14 +182,11 @@ class HomeActivity extends StatelessWidget {
                     trailing: Icon(Icons.work),
                   ),
                 ),
-            
-            
-                 TextButton(
+                TextButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => Sliders()),
+                      MaterialPageRoute(builder: (context) => Sliders()),
                     );
                   },
                   child: const ListTile(
@@ -197,31 +195,159 @@ class HomeActivity extends StatelessWidget {
                     trailing: Icon(Icons.work),
                   ),
                 ),
-                 
-                 TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const InfiniteCarouselsPage(), // Ensure you're using const if it's a const constructor
-                    ),
-                  );
-                },
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const InfiniteCarouselsPage(), // Ensure you're using const if it's a const constructor
+                      ),
+                    );
+                  },
                   child: const ListTile(
                     tileColor: Colors.white,
                     title: Text('Slider Image'),
                     trailing: Icon(Icons.work),
                   ),
                 ),
-            
-            
-            
-            
-            
+
+
+                  
+                  Row(
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FlutterSwitch(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          color: Colors.white,
+                          child: const ListTile(
+                            title: Text('Switch'),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: SwitchListTile(
+                        title: const Text('Simple Switch'),
+                        value: isSwitched1,
+                        onChanged: (value) {
+                          setState(() {
+                            isSwitched1 = value;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+
+
+
+                // TextButton(
+                //   onPressed: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) =>
+                //           SimpleBarChart(), // Ensure you're using const if it's a const constructor
+                //       ),
+                //     );
+                //   },
+                //   child: const ListTile(
+                //     tileColor: Colors.white,
+                //     title: Text('Flutter Charts'),
+                //     trailing: Icon(Icons.work),
+                //   ),
+                // ),
+                
+                
+                
                 TextButton(
                   onPressed: () {
-                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                          Navigation(), // Ensure you're using const if it's a const constructor
+                      ),
+                    );
                   },
+                  child: const ListTile(
+                    tileColor: Colors.white,
+                    title: Text('Navigation Bar'),
+                    trailing: Icon(Icons.work),
+                  ),
+                ),
+
+                
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                          FlutterTable(), // Ensure you're using const if it's a const constructor
+                      ),
+                    );
+                  },
+                  child: const ListTile(
+                    tileColor: Colors.white,
+                    title: Text('Table'),
+                    trailing: Icon(Icons.work),
+                  ),
+                ),
+                
+                
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                          FlutterCalendar(), // Ensure you're using const if it's a const constructor
+                      ),
+                    );
+                  },
+                  child: const ListTile(
+                    tileColor: Colors.white,
+                    title: Text('Flutter Calendar'),
+                    trailing: Icon(Icons.work),
+                  ),
+                ),
+                
+                
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                          HeroAnimation(title: 'Animation',), // Ensure you're using const if it's a const constructor
+                      ),
+                    );
+                  },
+                  child: const ListTile(
+                    tileColor: Colors.white,
+                    title: Text('Flutter Animation'),
+                    trailing: Icon(Icons.work),
+                  ),
+                ),
+
+
+
+
+
+
+                TextButton(
+                  onPressed: () {},
                   child: ListTile(
                     tileColor: Colors.white,
                     title: TextField(
