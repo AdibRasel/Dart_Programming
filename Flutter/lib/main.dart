@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shaminibazar/TabBarScreen/CheckboxRadioButtonProgressBar.dart';
+import 'package:shaminibazar/TabBarScreen/MyDesign.dart';
 import 'package:shaminibazar/TabBarScreen/Navigation.dart';
 import 'package:shaminibazar/TabBarScreen/Slider.dart';
 import 'package:shaminibazar/TabBarScreen/Snackbar.dart';
@@ -19,8 +20,11 @@ import 'TabBarScreen/LayoutBuilder.dart';
 import 'TabBarScreen/ListViewExamples.dart';
 import 'TabBarScreen/MediaQuery.dart';
 import 'TabBarScreen/Person.dart';
+import 'TabBarScreen/ResponsiveGrid.dart';
+import 'TabBarScreen/ResponsiveGridBootstrap.dart';
 import 'TabBarScreen/SingleChildScrollView.dart';
 import 'TabBarScreen/Slider_Image.dart';
+import 'TabBarScreen/StyleMediaQuery.dart';
 import 'TabBarScreen/Table.dart';
 import 'TabBarScreen/ToastNotification.dart';
 
@@ -91,6 +95,20 @@ class _HomeActivityState extends State<HomeActivity> {
                     tileColor: Colors.white,
                     title: Text('Home'),
                     trailing: Icon(Icons.home),
+                  ),
+                ),
+
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Mydesign()),
+                    );
+                  },
+                  child: const ListTile(
+                    tileColor: Colors.white,
+                    title: Text('My Design'),
+                    trailing: Icon(Icons.work),
                   ),
                 ),
 
@@ -187,6 +205,45 @@ class _HomeActivityState extends State<HomeActivity> {
                   child: const ListTile(
                     tileColor: Colors.white,
                     title: Text('Media Query'),
+                    trailing: Icon(Icons.work),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Stylemediaquery()),
+                    );
+                  },
+                  child: const ListTile(
+                    tileColor: Colors.white,
+                    title: Text('Style Media Query'),
+                    trailing: Icon(Icons.work),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ResponsiveGridBootstrap()),
+                    );
+                  },
+                  child: const ListTile(
+                    tileColor: Colors.white,
+                    title: Text('Responsive Grid Bootstrap'),
+                    trailing: Icon(Icons.work),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ResponsiveGrid()),
+                    );
+                  },
+                  child: const ListTile(
+                    tileColor: Colors.white,
+                    title: Text('Responsive Grid'),
                     trailing: Icon(Icons.work),
                   ),
                 ),
